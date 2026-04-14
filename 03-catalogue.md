@@ -21,7 +21,8 @@ Download the artifact and run the SQL scripts against your MySQL server:
 
 ```shell
 curl -L -o /tmp/catalogue.zip https://raw.githubusercontent.com/raghudevopsb89/roboshop-microservices/main/artifacts/catalogue.zip
-mkdir -p /tmp/catalogue && cd /tmp/catalogue
+mkdir -p /app
+cd /app
 unzip /tmp/catalogue.zip
 mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/schema.sql
 mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/app-user.sql
