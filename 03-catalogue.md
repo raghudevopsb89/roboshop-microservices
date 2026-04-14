@@ -9,7 +9,7 @@
 ## Step 1: Install Go 1.22
 
 ```shell
-dnf install -y golang git
+dnf install -y golang git mysql8.4
 go version
 ```
 
@@ -37,8 +37,8 @@ mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 catalogue < db/master-data.sql
 
 ```shell
 useradd -r -s /bin/false appuser
-mkdir -p /app
-cd /tmp/catalogue
+cd /app
+go init
 go mod tidy
 CGO_ENABLED=0 go build -o /app/catalogue .
 chown -R appuser:appuser /app
