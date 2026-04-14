@@ -1,4 +1,4 @@
-# 06-Catalogue Service
+# 03-Catalogue Service
 
 > **Hint** Catalogue Service manages products and categories. Built with Go, it stores data in MySQL and seeds product data on startup.
 

@@ -1,4 +1,4 @@
-# 03-Valkey (Redis Replacement)
+# 06-Valkey (Redis Replacement)
 
 > **RHEL 10 Note** RHEL 10 replaced Redis with Valkey, a fully compatible Redis fork. The Cart service works with Valkey without any code changes since Valkey uses the same protocol and default port (6379).
 

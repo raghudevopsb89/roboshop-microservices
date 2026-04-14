@@ -1,4 +1,4 @@
-# 1-Frontend
+# 01-Frontend
 
 > **Hint** The frontend is a Next.js application exported as static HTML/CSS/JS files, served by Nginx. Nginx also acts as an API gateway, routing `/api/*` paths to the appropriate backend services based on path prefix.
 

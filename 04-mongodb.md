@@ -1,4 +1,4 @@
-# 01-MongoDB
+# 04-MongoDB
 
 > **Hint** MongoDB stores user profiles and order documents as flexible JSON-like documents. The User Service and Orders Service both depend on this server being reachable before they can start.
 
