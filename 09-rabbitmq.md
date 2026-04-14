@@ -1,4 +1,4 @@
-# 04-RabbitMQ
+# 09-RabbitMQ
 
 > **Hint** RabbitMQ is the message broker for the asynchronous order pipeline. The Payment service publishes order events to a queue, the Orders service consumes and persists them, and then triggers the Notification service to send confirmations.
 

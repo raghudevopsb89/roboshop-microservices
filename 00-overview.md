@@ -35,12 +35,12 @@ RoboShop Microservices is a cloud-native e-commerce application for robotics com
 | Server 5  | t3.small  | Standard_B1ms  | RHEL 10 | User Service          |
 | Server 6  | t3.small  | Standard_B1ms  | RHEL 10 | Valkey                 |
 | Server 7  | t3.small  | Standard_B1ms  | RHEL 10 | Cart Service          |
-| Server 8  | t3.small  | Standard_B1ms  | RHEL 10 | Ratings Service       |
-| Server 9  | t3.small  | Standard_B1ms  | RHEL 10 | Shipping Service      |
-| Server 10 | t3.small  | Standard_B1ms  | RHEL 10 | RabbitMQ              |
-| Server 11 | t3.small  | Standard_B1ms  | RHEL 10 | Payment Service       |
-| Server 12 | t3.small  | Standard_B1ms  | RHEL 10 | Notification Service  |
-| Server 13 | t3.small  | Standard_B1ms  | RHEL 10 | Orders Service        |
+| Server 8  | t3.small  | Standard_B1ms  | RHEL 10 | Shipping Service      |
+| Server 9  | t3.small  | Standard_B1ms  | RHEL 10 | RabbitMQ              |
+| Server 10 | t3.small  | Standard_B1ms  | RHEL 10 | Payment Service       |
+| Server 11 | t3.small  | Standard_B1ms  | RHEL 10 | Notification Service  |
+| Server 12 | t3.small  | Standard_B1ms  | RHEL 10 | Orders Service        |
+| Server 13 | t3.small  | Standard_B1ms  | RHEL 10 | Ratings Service       |
 
 ## Prerequisites
 
@@ -65,9 +65,9 @@ The setup follows the **UI journey** — each step unlocks a new feature visible
 5. **User Service** — registration and login now work in the UI
 6. **Valkey** — in-memory store needed by Cart Service
 7. **Cart Service** — add-to-cart functionality now works
-8. **Ratings Service** — product star ratings now display and can be submitted
-9. **Shipping Service** — shipping cost calculation works at checkout
-10. **RabbitMQ** — message broker needed by Payment, Orders, and Notification
-11. **Payment Service** — checkout and payment flow now works
-12. **Notification Service** — must be up before Orders since Orders calls it on order creation
-13. **Orders Service** — order history and confirmation now appear after payment
+8. **Shipping Service** — shipping cost calculation works at checkout
+9. **RabbitMQ** — message broker needed by Payment, Orders, and Notification
+10. **Payment Service** — checkout and payment flow now works
+11. **Notification Service** — must be up before Orders since Orders calls it on order creation
+12. **Orders Service** — order history and confirmation now appear after payment
+13. **Ratings Service** — product star ratings now display and can be submitted

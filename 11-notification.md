@@ -1,4 +1,4 @@
-# 12-Notification Service
+# 11-Notification Service
 
 > **Hint** Notification Service sends order confirmation emails. Built with Python 3 / Flask. It listens for events from Orders Service and sends emails via Brevo API (free tier: 300 emails/day). In development mode (no API key set), it logs emails to stdout instead.
 

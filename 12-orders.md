@@ -1,4 +1,4 @@
-# 11-Orders Service
+# 12-Orders Service
 
 > **Hint** Orders Service listens to `order.queue` on RabbitMQ, creates order records in MongoDB, calculates shipping costs by calling Shipping Service, and triggers Notification Service. Built with Java 17 + Spring Boot.
 

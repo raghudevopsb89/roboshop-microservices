@@ -1,4 +1,4 @@
-# 10-Ratings Service
+# 13-Ratings Service
 
 > **Hint** Ratings Service stores product ratings submitted by users. Built with Python 3 / Flask. Stores data in MySQL.
 

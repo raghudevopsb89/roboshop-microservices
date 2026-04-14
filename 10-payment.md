@@ -1,4 +1,4 @@
-# 09-Payment Service
+# 10-Payment Service
 
 > **Hint** Payment Service processes checkout and publishes order events to RabbitMQ. Built with Python 3 / FastAPI. It validates cart and user data, then puts a message on the `order.queue` for Orders Service to consume.
 

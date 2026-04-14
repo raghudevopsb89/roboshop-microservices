@@ -1,4 +1,4 @@
-# 13-Frontend
+# 1-Frontend
 
 > **Hint** The frontend is a Next.js application exported as static HTML/CSS/JS files, served by Nginx. Nginx also acts as an API gateway, routing `/api/*` paths to the appropriate backend services based on path prefix.
 
@@ -77,49 +77,49 @@ http {
 
         location /api/catalogue/ {
             rewrite ^/api/catalogue/(.*)$ /$1 break;
-            proxy_pass http://127.0.0.1:8002;
+            proxy_pass http://localhost:8002;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
         }
 
         location /api/user/ {
             rewrite ^/api/user/(.*)$ /$1 break;
-            proxy_pass http://127.0.0.1:8001;
+            proxy_pass http://localhost:8001;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
         }
 
         location /api/cart/ {
             rewrite ^/api/(.*)$ /$1 break;
-            proxy_pass http://127.0.0.1:8003;
+            proxy_pass http://localhost:8003;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
         }
 
         location /api/shipping/ {
             rewrite ^/api/(.*)$ /$1 break;
-            proxy_pass http://127.0.0.1:8004;
+            proxy_pass http://localhost:8004;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
         }
 
         location /api/payment/ {
             rewrite ^/api/(.*)$ /$1 break;
-            proxy_pass http://127.0.0.1:8005;
+            proxy_pass http://localhost:8005;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
         }
 
         location /api/ratings/ {
             rewrite ^/api/(.*)$ /$1 break;
-            proxy_pass http://127.0.0.1:8006;
+            proxy_pass http://localhost:8006;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
         }
 
         location /api/orders/ {
             rewrite ^/api/(.*)$ /$1 break;
-            proxy_pass http://127.0.0.1:8007;
+            proxy_pass http://localhost:8007;
             proxy_set_header Host $host;
             proxy_set_header X-Real-IP $remote_addr;
         }
@@ -136,7 +136,7 @@ http {
 }
 ```
 
-> **Important** All upstream addresses are set to `127.0.0.1` by default so Nginx starts without errors. As you set up each service on its own server, update the corresponding `127.0.0.1` to that server's private IP and run `systemctl restart nginx`. Use IP addresses (not hostnames) to avoid IPv6 resolution issues.
+> **Important** All upstream addresses are set to `localhost` by default so Nginx starts without errors. As you set up each service on its own server, update the corresponding `localhost` to that server's private IP and run `systemctl restart nginx`. Use IP addresses (not hostnames) to avoid IPv6 resolution issues.
 
 ---
 
