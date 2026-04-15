@@ -17,7 +17,7 @@ dnf install -y python3 python3-pip
 ## Step 2 — Add User and Deploy
 
 ```shell
-useradd -r -s /bin/false appuser
+useradd -d /app -r -s /bin/false appuser
 mkdir -p /app
 curl -L -o /tmp/notification.zip https://raw.githubusercontent.com/raghudevopsb89/roboshop-microservices/main/artifacts/notification.zip
 cd /app
@@ -42,9 +42,10 @@ After=network.target
 Type=simple
 User=appuser
 WorkingDirectory=/app
-ExecStart=gunicorn -b 0.0.0.0:8008 app:app
+ExecStart=/usr/local/bin/gunicorn -b 0.0.0.0:8008 app:app
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=notification
 
 Environment=BREVO_API_KEY=
 Environment=FROM_EMAIL=noreply@roboshop.demo
@@ -73,7 +74,7 @@ systemctl start notification
 
 ```shell
 systemctl status notification
-curl http://localhost:8008/health
+journalctl -u notification -f
 ```
 
 > **Re-deployment Note** If you redeploy the application zip, re-run the `pip3 install -r requirements.txt` step, then run `systemctl restart notification`.

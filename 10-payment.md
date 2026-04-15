@@ -50,9 +50,10 @@ After=network.target
 Type=simple
 User=appuser
 WorkingDirectory=/app
-ExecStart=uvicorn main:app --host 0.0.0.0 --port 8005
+ExecStart=/usr/local/bin/uvicorn main:app --host 0.0.0.0 --port 8005
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=payment
 
 Environment=AMQP_HOST=localhost
 Environment=AMQP_USER=roboshop
@@ -83,7 +84,7 @@ systemctl start payment
 
 ```shell
 systemctl status payment
-curl http://localhost:8005/health
+journalctl -u payment -f 
 ```
 
 > **Re-deployment Note** If you redeploy the application zip, re-run the `pip3 install -r requirements.txt` step, then run `systemctl restart payment`.

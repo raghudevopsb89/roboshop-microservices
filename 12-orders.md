@@ -20,7 +20,7 @@ dnf install -y java-21-openjdk java-21-openjdk-devel maven
 useradd -r -s /bin/false appuser
 mkdir -p /app
 curl -L -o /tmp/orders.zip https://raw.githubusercontent.com/raghudevopsb89/roboshop-microservices/main/artifacts/orders.zip
-mkdir -p /tmp/orders && cd /tmp/orders
+mkdir -p /app && cd /app
 unzip /tmp/orders.zip
 mvn clean package -DskipTests
 cp target/orders.jar /app/orders.jar
@@ -46,6 +46,7 @@ WorkingDirectory=/app
 ExecStart=java -jar /app/orders.jar
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=orders
 
 Environment=MONGO_URL=mongodb://localhost:27017/orders
 Environment=AMQP_HOST=localhost
@@ -77,7 +78,7 @@ systemctl start orders
 
 ```shell
 systemctl status orders
-curl http://localhost:8007/health
+journalctl -u orders -f
 ```
 
 > **Re-deployment Note** If you redeploy the source, re-run the `mvn clean package -DskipTests` and `cp target/orders.jar /app/orders.jar` steps, then run `systemctl restart orders`.

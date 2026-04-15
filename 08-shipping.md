@@ -9,7 +9,7 @@
 ## Step 1: Install Java 21
 
 ```shell
-dnf install -y java-21-openjdk java-21-openjdk-devel maven
+dnf install -y java-21-openjdk java-21-openjdk-devel maven mysql8.4
 java -version
 ```
 
@@ -23,7 +23,8 @@ Download the artifact and run the SQL scripts against your MySQL server:
 
 ```shell
 curl -L -o /tmp/shipping.zip https://raw.githubusercontent.com/raghudevopsb89/roboshop-microservices/main/artifacts/shipping.zip
-mkdir -p /tmp/shipping && cd /tmp/shipping
+mkdir -p /app
+cd /app
 unzip /tmp/shipping.zip
 mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/schema.sql
 mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/app-user.sql
@@ -37,8 +38,7 @@ mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/app-user.sql
 
 ```shell
 useradd -r -s /bin/false appuser
-mkdir -p /app
-cd /tmp/shipping
+cd /app
 mvn clean package -DskipTests
 cp target/shipping.jar /app/shipping.jar
 chown -R appuser:appuser /app
@@ -63,6 +63,7 @@ WorkingDirectory=/app
 ExecStart=java -jar /app/shipping.jar
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=shipping
 
 Environment=DB_HOST=localhost
 Environment=DB_USER=shipping
@@ -91,5 +92,5 @@ Verify the service is running:
 
 ```shell
 systemctl status shipping
-curl http://localhost:8004/health
+journalctl -u shipping -f 
 ```

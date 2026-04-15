@@ -53,6 +53,7 @@ WorkingDirectory=/app
 ExecStart=/usr/bin/node server.js
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=cart
 
 Environment=REDIS_HOST=localhost
 Environment=CATALOGUE_URL=http://localhost:8002

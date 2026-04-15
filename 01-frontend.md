@@ -110,7 +110,7 @@ http {
             proxy_set_header X-Real-IP $remote_addr;
         }
 
-        location /api/ratings/ {
+        location /api/ratings {
             rewrite ^/api/(.*)$ /$1 break;
             proxy_pass http://localhost:8006;
             proxy_set_header Host $host;

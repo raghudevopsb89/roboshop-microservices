@@ -9,7 +9,7 @@
 ## Step 1 — Install Python 3
 
 ```shell
-dnf install -y python3 python3-pip
+dnf install -y python3 python3-pip mysql8.4
 ```
 
 ---
@@ -18,7 +18,7 @@ dnf install -y python3 python3-pip
 
 ```shell
 curl -L -o /tmp/ratings.zip https://raw.githubusercontent.com/raghudevopsb89/roboshop-microservices/main/artifacts/ratings.zip
-mkdir -p /tmp/ratings && cd /tmp/ratings
+mkdir -p /app && cd /app
 unzip /tmp/ratings.zip
 mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/schema.sql
 mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/app-user.sql
@@ -31,7 +31,6 @@ mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 < db/app-user.sql
 ```shell
 useradd -r -s /bin/false appuser
 mkdir -p /app
-cp -r /tmp/ratings/* /app/
 pip3 install -r /app/requirements.txt cryptography
 chown -R appuser:appuser /app
 chmod o-rwx /app -R
@@ -55,6 +54,7 @@ WorkingDirectory=/app
 ExecStart=gunicorn -b 0.0.0.0:8006 app:app
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=ratings
 
 Environment=MYSQL_HOST=localhost
 Environment=MYSQL_USER=ratings
@@ -84,7 +84,7 @@ systemctl start ratings
 
 ```shell
 systemctl status ratings
-curl http://localhost:8006/health
+journalctl -u ratings -f
 ```
 
 > **Re-deployment Note** If you redeploy the application files, re-run the `pip3 install -r /app/requirements.txt cryptography` step, then run `systemctl restart ratings`.

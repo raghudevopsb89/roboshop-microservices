@@ -55,6 +55,7 @@ WorkingDirectory=/app
 ExecStart=/usr/bin/node server.js
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=user
 
 Environment=MONGO_URL=mongodb://localhost:27017/users
 Environment=JWT_SECRET=roboshop-secret-key
@@ -82,5 +83,5 @@ Verify the service is running:
 
 ```shell
 systemctl status user
-curl http://localhost:8001/health
+journalctl -u user -f
 ```

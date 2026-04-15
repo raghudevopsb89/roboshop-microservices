@@ -65,6 +65,7 @@ WorkingDirectory=/app
 ExecStart=/app/catalogue
 Restart=on-failure
 RestartSec=10
+SyslogIdentifier=catalogue
 
 Environment=MYSQL_HOST=localhost
 Environment=MYSQL_USER=catalogue
