@@ -81,4 +81,4 @@ systemctl status orders
 journalctl -u orders -f
 ```
 
-> **Re-deployment Note** If you redeploy the source, re-run the `mvn clean package -DskipTests` and `cp target/orders.jar /app/orders.jar` steps, then run `systemctl restart orders`.
+

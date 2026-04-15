@@ -87,4 +87,3 @@ systemctl status ratings
 journalctl -u ratings -f
 ```
 
-> **Re-deployment Note** If you redeploy the application files, re-run the `pip3 install -r /app/requirements.txt cryptography` step, then run `systemctl restart ratings`.
