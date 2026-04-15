@@ -37,24 +37,6 @@ mysql -u root -e "
 
 ---
 
-## Start
-
-MySQL is already started during the Install step. To restart manually if needed:
-
-```shell
-systemctl restart mysqld
-```
-
----
-
-## Verify
-
-Check that the service is active:
-
-```shell
-systemctl status mysqld
-```
-
 Confirm you can connect as root and list databases:
 
 ```shell

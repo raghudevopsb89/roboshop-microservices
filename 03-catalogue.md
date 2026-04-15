@@ -38,7 +38,6 @@ mysql -h <MYSQL-SERVER-IP> -u root -pRoboShop@1 catalogue < db/master-data.sql
 ```shell
 useradd -r -s /bin/false appuser
 cd /app
-go get
 go mod tidy
 CGO_ENABLED=0 go build -o /app/catalogue .
 chown -R appuser:appuser /app
